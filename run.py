@@ -19,8 +19,8 @@ class SSLWSGIRefServer(ServerAdapter):
         srv = make_server(self.host, self.port, handler, **self.options)
         srv.socket = ssl.wrap_socket (
         	srv.socket,
-        	certfile='/root/web/cert.pem',  # path to certificate
-        	keyfile='/root/web/key.unsec.pem',
+        	certfile='server.pem',  # path to certificate
+        	#keyfile='/root/web/key.unsec.pem',
         	server_side=True)
         srv.serve_forever()
 
