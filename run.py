@@ -29,11 +29,13 @@ log=deque(maxlen=2000)
 @hook('after_request')
 def my_log():
     log.appendleft(
-        '%s [%s] %s %s %s' % (request.remote_addr,
-                              datetime.now(),
-                              request.method,
-                              request.url,
-                              response.status)
+        '%s [%s] %s [%s] %s' % (
+            request.remote_addr,
+            datetime.now(),
+            request.method,
+            request.url,
+            response.status
+            )
     )
 
 
@@ -47,6 +49,7 @@ def doPost():
     if password == 'd':
         openDoor()
     else:
+        log.appendleft("! wrong post body => " +  request.body.getvalue())
         sleep(5)
     return html()
 
