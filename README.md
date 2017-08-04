@@ -4,7 +4,7 @@
 ```
 $ wget https://bottlepy.org/bottle.py
 ```
-2. generate cert & key:
+2. generate SSL certificate:
 ```
 openssl req -new -x509 -keyout server.pem -out server.pem -days 365 -nodes
 ```
