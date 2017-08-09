@@ -5,6 +5,8 @@ from time import sleep
 from datetime import datetime
 from collections import deque
 
+# wait for few sec to allow ntp get current time from internet.
+sleep(3)
 startAt = str( datetime.now() )
 
 # copied from bottle. Only changes are to import ssl and wrap the socket
@@ -49,7 +51,7 @@ def doPost():
     if password == 'd':
         openDoor()
     else:
-        log.appendleft("! wrong post body => " +  request.body.getvalue())
+        log.appendleft("!! ILLEGAL post body => " +  request.body.getvalue())
         sleep(5)
     return html()
 
